@@ -191,7 +191,7 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
 function getFullNames(runners) {
-  names = [];
+  const names = [];
   runners.forEach((currentValue) => {
     names.push(`${currentValue.last_name}, ${currentValue.first_name}`)
   });
@@ -230,7 +230,9 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  return runners.filter()
+  return runners.filter(function(item){
+    return item.shirt_size === tShirtSize;
+  });
 }
 
 /**
@@ -243,9 +245,19 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  const totalDonations = runners.reduce(function (accumulator, currentValue){
+    return accumulator + currentValue.donation;
+  }, 0);
+  return totalDonations;
 }
+
+/*function processSum(numberList, callback) {
+  const sum = numberList.reduce(function (accumulator, currentValue){
+    return accumulator + currentValue;
+  }, 0);
+  return callback(sum);
+}*/
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
